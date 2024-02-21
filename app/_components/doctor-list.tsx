@@ -1,10 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import GlobalApi from "../_utils/GlobalApi";
 
-const DoctorList = () => {
+interface IDoctorList {
+    heading?: string;
+}
+
+const DoctorList = ({ heading = "Popular Doctors" }: IDoctorList) => {
     const [doctorList, setDoctorList] = useState([]);
 
     useEffect(() => {
@@ -18,36 +23,49 @@ const DoctorList = () => {
 
     return (
         <div className="mb-10 px-8">
-            <h2 className="font-bold text-xl mb-3">Popular Doctors</h2>
-            {/* <div className="">
+            <h2 className="font-bold text-xl mb-3">{heading}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
                 {doctorList.length > 0 ? (
                     doctorList.map((doctor: any, index) => (
-                        <div className="" key={index}>
+                        <div
+                            className="border rounded-lg p-4 cursor-pointer hover:border-primary"
+                            key={index}
+                        >
                             <Image
                                 src={
                                     doctor.attributes?.image?.data?.attributes
                                         ?.url
                                 }
+                                width={500}
+                                height={200}
                                 alt="Doctor"
                                 className="h-[200px] w-full object-cover rounded-lg"
                             />
 
-                            <div className="mt-3">
+                            <div className="mt-3 items-baseline flex flex-col gap-1">
                                 <h2 className="bg-blue-100 px-2 rounded-full text-primary">
                                     {
                                         doctor.attributes?.categories.data[0]
-                                            .attibutes?.Name
+                                            .attributes?.Name
                                     }
                                 </h2>
                                 <h2 className="font-bold text-xl mt-2">
-                                    {doctor.attibutes.Name}
+                                    {doctor.attributes.Name}
                                 </h2>
-                                <h2 className="font-bold text-xl mt-2">
-                                    {doctor.attibutes?.Year_of_Experience}
+                                <h2 className="text-sm text-muted-foreground">
+                                    {doctor.attributes?.Year_of_Experience}
                                 </h2>
-                                <h2 className="font-bold text-xl mt-2">
-                                    {doctor.attibutes?.Address}
+                                <h2 className="text-sm text-muted-foreground">
+                                    {doctor.attributes?.Address}
                                 </h2>
+                                <Link
+                                    href={"/details/" + doctor?.id}
+                                    className="w-full"
+                                >
+                                    <h2 className="p-2 px-3 border border-primary text-primary rounded-full w-full text-center text-[1rem] mt-2 hover:bg-primary hover:text-white hover:border-transparent cursor-pointer transition-all ease-in-out duration-500">
+                                        Book Now
+                                    </h2>
+                                </Link>
                             </div>
                         </div>
                     ))
@@ -61,8 +79,8 @@ const DoctorList = () => {
                         ))}
                     </div>
                 )}
-            </div> */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
+            </div>
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
                 {Array.from({ length: 5 }, (_, index) => (
                     <div
                         className="border rounded-lg p-4 cursor-pointer hover:border-primary"
@@ -95,7 +113,7 @@ const DoctorList = () => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 };

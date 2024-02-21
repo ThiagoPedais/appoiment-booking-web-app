@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import GlobalApi from "../_utils/GlobalApi";
 
@@ -45,7 +46,8 @@ const CategorySearch = () => {
                 {categoryList.length > 0
                     ? categoryList.map((item: any, index) =>
                           Array.from({ length: 6 }, (_, index) => (
-                              <div
+                              <Link
+                                  href={"/search/" + item.attributes?.Name}
                                   key={index}
                                   className="flex flex-col text-center py-5 px-8 bg-blue-200 m-2 rounded-lg gap-2 hover:scale-110 transition-all ease-in-out cursor-pointer"
                               >
@@ -58,7 +60,7 @@ const CategorySearch = () => {
                                   <label className="text-blue-600 text-sm">
                                       {item?.attributes?.Name}
                                   </label>
-                              </div>
+                              </Link>
                           ))
                       )
                     : [1, 2, 3, 4, 5].map((item, idx) => (
