@@ -9,12 +9,21 @@ const axiosClient = axios.create({
     },
 });
 
-const getCategory = () => axiosClient.get("categories?populate=*");
-const getDoctors = () => axiosClient.get("doctors?populate=*");
+const getCategory = () => axiosClient.get("/categories?populate=*");
+const getDoctors = () => axiosClient.get("/doctors?populate=*");
+const getDoctorList = () => axiosClient.get("/doctors?populate=*");
 
 const getDoctorByCategory = (category: string) =>
     axiosClient.get(
-        "/doctors?filters[categories][Name][$in]=" + category + "&populate=*"
+        "/doctors?filters[categories][Name][$in]=" + category + "?populate=*"
     );
+const getDoctorById = (id: string) =>
+    axiosClient.get("/doctors/" + id + "?populate=*");
 
-export default { getCategory, getDoctors, getDoctorByCategory };
+export default {
+    getCategory,
+    getDoctors,
+    getDoctorByCategory,
+    getDoctorById,
+    getDoctorList,
+};

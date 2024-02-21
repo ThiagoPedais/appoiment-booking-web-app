@@ -1,4 +1,4 @@
-import CategoryList from "./search/_components/category-list";
+import CategoryList from "./_components/category-list";
 
 const LayoutRoute = ({
     children,
