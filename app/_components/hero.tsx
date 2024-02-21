@@ -16,7 +16,7 @@ const Hero = () => {
                         />
                     </div>
 
-                    <div className="lg:py-24">
+                    <div className="lg:py-24 text-center md:text-left">
                         <h2 className="text-3xl font-bold sm:text-4xl">
                             Find & Book{" "}
                             <span className="text-primary">Appointment</span>{" "}

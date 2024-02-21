@@ -25,7 +25,7 @@ const CategorySearch = () => {
             <h2 className="text-4xl font-bold tracking-wide">
                 Search <span className="text-primary">Doctors</span>
             </h2>
-            <h2 className="capitalize text-muted-foreground px-1 text-xl">
+            <h2 className="capitalize text-muted-foreground px-1 text-xl text-center">
                 search your doctor and book appoiment in one click
             </h2>
 
@@ -42,24 +42,31 @@ const CategorySearch = () => {
             </div>
 
             <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 mt-5">
-                {categoryList.map((item: any, index) =>
-                    Array.from({ length: 6 }, (_, index) => (
-                        <div
-                            key={index}
-                            className="flex flex-col text-center py-5 px-8 bg-blue-200 m-2 rounded-lg gap-2 hover:scale-110 transition-all ease-in-out cursor-pointer"
-                        >
-                            <Image
-                                src="/teeth.png"
-                                alt="icon"
-                                width={40}
-                                height={40}
-                            />
-                            <label className="text-blue-600 text-sm">
-                                {item?.attributes?.Name}
-                            </label>
-                        </div>
-                    ))
-                )}
+                {categoryList.length > 0
+                    ? categoryList.map((item: any, index) =>
+                          Array.from({ length: 6 }, (_, index) => (
+                              <div
+                                  key={index}
+                                  className="flex flex-col text-center py-5 px-8 bg-blue-200 m-2 rounded-lg gap-2 hover:scale-110 transition-all ease-in-out cursor-pointer"
+                              >
+                                  <Image
+                                      src="/teeth.png"
+                                      alt="icon"
+                                      width={40}
+                                      height={40}
+                                  />
+                                  <label className="text-blue-600 text-sm">
+                                      {item?.attributes?.Name}
+                                  </label>
+                              </div>
+                          ))
+                      )
+                    : [1, 2, 3, 4, 5].map((item, idx) => (
+                          <div
+                              key={idx}
+                              className="m-2 h-[100px] w-[100px] bg-slate-100 rounded-lg animate-pulse"
+                          ></div>
+                      ))}
             </div>
         </div>
     );

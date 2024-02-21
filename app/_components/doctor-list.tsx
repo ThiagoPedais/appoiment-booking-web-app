@@ -20,7 +20,7 @@ const DoctorList = () => {
         <div className="mb-10 px-8">
             <h2 className="font-bold text-xl mb-3">Popular Doctors</h2>
             {/* <div className="">
-                {doctorList &&
+                {doctorList.length > 0 ? (
                     doctorList.map((doctor: any, index) => (
                         <div className="" key={index}>
                             <Image
@@ -40,17 +40,27 @@ const DoctorList = () => {
                                     }
                                 </h2>
                                 <h2 className="font-bold text-xl mt-2">
-                                {doctor.attibutes.Name}
-                            </h2>
+                                    {doctor.attibutes.Name}
+                                </h2>
                                 <h2 className="font-bold text-xl mt-2">
-                                {doctor.attibutes.?.Year_of_Experience}
-                            </h2>
+                                    {doctor.attibutes?.Year_of_Experience}
+                                </h2>
                                 <h2 className="font-bold text-xl mt-2">
-                                {doctor.attibutes.?.Address}
-                            </h2>
+                                    {doctor.attibutes?.Address}
+                                </h2>
                             </div>
                         </div>
-                    ))}
+                    ))
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
+                        {[1, 2, 3, 4, 5, 6].map((item, index) => (
+                            <div
+                                key={index}
+                                className="h-[320px] bg-slate-100 rounded-lg animate-pulse"
+                            ></div>
+                        ))}
+                    </div>
+                )}
             </div> */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7">
                 {Array.from({ length: 5 }, (_, index) => (
