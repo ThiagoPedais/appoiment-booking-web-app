@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import Footer from "./_components/footer";
 import Header from "./_components/header";
 import "./globals.css";
 
@@ -20,8 +21,9 @@ export default function RootLayout({
             <body className={outfit.className}>
                 <div className="md:px-20">
                     <Header />
+                    {children}
                 </div>
-                {children}
+                <Footer />
             </body>
         </html>
     );
