@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "email dev"
+    
   },
   "dependencies": {
     "@kinde-oss/kinde-auth-nextjs": "^2.1.13",
@@ -16,10 +18,14 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^0.2.1",
+    "date-fns": "^3.3.1",
     "lucide-react": "^0.334.0",
     "next": "14.1.0",
+    "next-themes": "^0.2.1",
     "react": "^18",
+    "react-day-picker": "^8.10.0",
     "react-dom": "^18",
+    "sonner": "^1.4.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7"
   },

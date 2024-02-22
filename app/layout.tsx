@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import Footer from "./_components/footer";
@@ -22,6 +23,7 @@ export default function RootLayout({
                 <div className="md:px-20">
                     <Header />
                     {children}
+                    <Toaster />
                 </div>
                 <Footer />
             </body>
