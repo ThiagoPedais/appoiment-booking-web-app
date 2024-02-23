@@ -15,12 +15,22 @@ const getDoctorList = () => axiosClient.get("/doctors?populate=*");
 
 const getDoctorByCategory = (category: string) =>
     axiosClient.get(
-        "/doctors?filters[categories][Name][$in]=" + category + "?populate=*"
+        "/doctors?filters[categories][Name][$in]=" + category + "&populate=*"
     );
 const getDoctorById = (id: string) =>
     axiosClient.get("/doctors/" + id + "?populate=*");
 
 const bookAppointment = (data: any) => axiosClient.post("/appointments", data);
+const sendEmail = (data: any) => axios.post("/api/sendEmail", data);
+
+const getuserBookingList = (userEmail: string) =>
+    axiosClient.get(
+        "/appointments?[filters][Email][$eq]=" +
+            userEmail +
+            "&populate[doctor][populate][image][populate][0]=url&populate=*"
+    );
+
+const deleteBooking = (id: string) => axiosClient.delete("/appointments/" + id);
 
 export default {
     getCategory,
@@ -29,4 +39,7 @@ export default {
     getDoctorById,
     getDoctorList,
     bookAppointment,
+    sendEmail,
+    getuserBookingList,
+    deleteBooking,
 };
